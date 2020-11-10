@@ -1,14 +1,16 @@
 ﻿# Codes-for-RiskSeq-TKDE
-Thank you for your interests for our work!
+Thank you for your interests in our work!
 
 The dataset we ultilized for training and testing for NYC is reposited in BaiduYun.
-Address: https://pan.baidu.com/s/1_lMpaY7bfkkAIPbmJyRCsw 
-Extraction Codes: 67tu
-For the contract of SIP dataset, we apologize for its temporal unavailability.
+
+Address: https://pan.baidu.com/s/1_lMpaY7bfkkAIPbmJyRCsw  Extraction Codes: 67tu.  
+
+For the contract of SIP dataset, we apologize for its temporal unavailability due to the contract.
 
 You can download this notebook as well as the well-organized dataset for training and testing. The toy example for visualization is in AAAI2020-RiskOracle Respository. 
 If you find this work interesting, please find the citation of these two papers (AAAI and TKDE) as below.
 Thank you very much.
+Any question you can email to zzy0929@mail.ustc.edu.cn
 
 @article{zhou2020foresee,
   title={Foresee Urban Sparse Traffic Accidents: A Spatiotemporal Multi-Granularity Perspective},
