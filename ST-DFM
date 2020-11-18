@@ -1,0 +1,43 @@
+from keras.layers import Input, Embedding, LSTM, Dense
+from keras.models import Model
+import numpy as np
+import keras
+from keras.layers import multiply
+
+input1=Input((35,), dtype='float', name='input_RN')
+input2=Input((9,), dtype='float', name='input_TS')
+input3=Input((7,), dtype='float', name='input_Data')
+
+
+Field_1 = Dense(16, activation='relu')(input1)
+Field_1_Em = Dense(8, activation='relu')(Field_1)
+Field_2 = Dense(8, activation='relu')(input2)
+Field_2_Em = Dense(8, activation='relu')(Field_2)
+
+Field_3 = Dense(8, activation='relu')(input3)
+Field_3_Em = Dense(8, activation='relu')(Field_3)
+
+Mult1_2=multiply([Field_1_Em,Field_2_Em])
+
+Mult1_3=multiply([Field_1_Em,Field_3_Em])
+Mult2_3=multiply([Field_2_Em,Field_3_Em])
+
+Concat_FM = keras.layers.concatenate([Mult1_2, Mult1_3,Mult2_3])
+
+Dense1=Dense(8, activation='relu')(input1)
+Dense2=Dense(8, activation='relu')(input2)
+Dense3=Dense(8, activation='relu')(input3)
+
+Concat_DNN = keras.layers.concatenate([Dense1, Dense2,Dense3])
+
+
+main_output1 = keras.layers.Add()([Concat_DNN, Concat_FM])
+main_output2= Dense(16, activation='relu')(main_output1)
+
+main_output2=Dense(4, activation='relu')(main_output2)
+main_output2=Dense(1, activation='relu')(main_output2)
+
+model=Model(inputs=[input1, input2,input3], outputs=[main_output2])
+
+model.compile(optimizer='rmsprop',loss= 'mse')
+print(model.summary())
